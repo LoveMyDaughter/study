@@ -10,13 +10,13 @@ class Config(object):
 
     DEBUG = False
 
-    SECRET_KEY = ''
+    SECRET_KEY = 'ezj+e4m@auyzke$5)rnc%r!3%enk5%!lmwb22^md2_okgnqem0'
 
     WTF_CSRF_ENABLED = True
 
-    WTF_CSRF_SECRET_KEY = ''
+    WTF_CSRF_SECRET_KEY = 'ezj+e4m@auyzke$5)rnc%r!3%enk5%!lmwb22^md2_okgnqem0'
 
-    SQLALCHEMY_DATABASE_URI = 'postgres://user:password@localhost/db_name'
+    SQLALCHEMY_DATABASE_URI = 'postgres://postgres:postgres@localhost:5432/db_name'
 
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 

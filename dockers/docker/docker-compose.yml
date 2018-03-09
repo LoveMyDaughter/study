@@ -1,32 +1,27 @@
 version: "3"
 services:
-  postgres-db:
-    image: postgres:latest
-    environment:
-      - POSTGRES_PASSWORD=postgres
-    ports:
-      - "5432:5432"
-  flask-backend:
-    image: advorzhak/ss_ita_task_0:0.0.1
-    environment:
-      - FLASK_APP=/backend/app.py
-      - FLASK_DEBUG=1
+  database-postgres:
+    image: lovemydaughter/database
+    build:
+      context: ./db
+      dockerfile: Dockerfile
+    expose:
+     - "5432"
+  backend-flask:
+    image: lovemydaughter/backend
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
     ports:
       - "5000:5000"
-    volumes:
-      - ./backend:/backend
     depends_on: 
-      - postgres-db
-    command: ["sh", "/backend/flask_run.sh"]
-  django-frontend:
-    image: advorzhak/ss_ita_task_0:0.0.1
+      - database-postgres
+  client-django:
+    image: lovemydaughter/client
+    build:
+      context: ./client
+      dockerfile: Dockerfile
     ports:
       - "8000:8000"
-    volumes:
-      - ./frontend:/frontend
     depends_on: 
-      - flask-backend
-    command: ["sh", "/frontend/django_run.sh"]
-volumes:
-  backend:
-  frontend:
+      - backend-flask
