@@ -1,27 +1,27 @@
 version: "3"
 services:
   database-postgres:
-    image: lovemydaughter/database
+    image: database
     build:
       context: ./db
       dockerfile: Dockerfile
     expose:
-     - "5432"
+      - "5432"
   backend-flask:
-    image: lovemydaughter/backend
+    image: backend
     build:
       context: ./backend
       dockerfile: Dockerfile
     ports:
       - "5000:5000"
-    depends_on: 
+    depends_on:
       - database-postgres
   client-django:
-    image: lovemydaughter/client
+    image: client
     build:
       context: ./client
       dockerfile: Dockerfile
     ports:
       - "8000:8000"
-    depends_on: 
+    depends_on:
       - backend-flask

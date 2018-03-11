@@ -13,7 +13,7 @@ DATABASES = {
         'NAME': 'db_name',
         'USER': 'postgres',
         'PASSWORD': 'postgres',
-        'HOST': 'localhost',
+        'HOST': 'database-postgres',
         'PORT': '5432',
     }
 }
