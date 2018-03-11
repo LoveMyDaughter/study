@@ -1,0 +1,4 @@
+FROM postgres:latest
+WORKDIR /db
+ENV POSTGRES_PASSWORD=postgres
+EXPOSE 5432
